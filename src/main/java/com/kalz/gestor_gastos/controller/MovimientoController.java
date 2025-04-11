@@ -17,10 +17,13 @@ public class MovimientoController {
     @Autowired
     private MovimientoService movimientoService;
 
-    // Crear un nuevo movimiento
-    @PostMapping
-    public ResponseEntity<Movimiento> crearMovimiento(@RequestBody Movimiento movimiento) {
-        Movimiento nuevoMovimiento = movimientoService.crearMovimiento(movimiento);
+    // Crear un nuevo movimiento asociado a un usuario
+    @PostMapping("/usuario/{usuarioId}")
+    public ResponseEntity<Movimiento> crearMovimiento(
+            @PathVariable Long usuarioId,
+            @RequestBody Movimiento movimiento
+    ) {
+        Movimiento nuevoMovimiento = movimientoService.crearMovimiento(movimiento, usuarioId);
         return new ResponseEntity<>(nuevoMovimiento, HttpStatus.CREATED);
     }
 
