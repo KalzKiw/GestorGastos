@@ -1,7 +1,10 @@
 package com.kalz.gestor_gastos.model;
 
-import jakarta.persistence.*;
+import com.kalz.gestor_gastos.model.Usuario;
+import jakarta.validation.constraints.*;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
@@ -11,22 +14,27 @@ public class Movimiento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El tipo es obligatorio")
     private String tipo;
 
+    @NotNull(message = "La cantidad es obligatoria")
+    @Positive(message = "La cantidad debe ser positiva")
     private Double cantidad;
 
+    @NotBlank(message = "La categoría es obligatoria")
     private String categoria;
 
+    @Size(max = 255, message = "La descripción no puede exceder los 255 caracteres")
     private String descripcion;
 
+    @NotNull(message = "La fecha es obligatoria")
     private LocalDate fecha;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
     // Getters y Setters
-
     public Long getId() {
         return id;
     }
@@ -83,4 +91,3 @@ public class Movimiento {
         this.usuario = usuario;
     }
 }
-
