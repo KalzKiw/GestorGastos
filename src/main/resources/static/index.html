@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Gastos</title>
+    <link rel="stylesheet" href="style.css"> <!-- Aquí añades tu archivo CSS -->
+</head>
+<body>
+<header>
+    <h1>Gestor de Gastos</h1>
+</header>
+
+<main>
+    <section id="movimientos">
+        <h2>Movimientos</h2>
+        <div id="movimientos-list"></div>
+    </section>
+
+    <section id="nuevo-movimiento">
+        <h2>Añadir Movimiento</h2>
+        <form id="formulario-movimiento">
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo">
+                <option value="ingreso">Ingreso</option>
+                <option value="gasto">Gasto</option>
+            </select>
+
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" required>
+
+            <label for="categoria">Categoría:</label>
+            <input type="text" id="categoria" name="categoria">
+
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion">
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha">
+
+            <button type="submit">Añadir Movimiento</button>
+        </form>
+    </section>
+</main>
+
+<script src="app.js"></script> <!-- Aquí añades tu archivo JS -->
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - GestorGastos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+        }
+        .container {
+            margin-left: 200px; /* Desplazamos el contenido a la derecha para dejar espacio al menú */
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100vh;
+            background-color: #343a40;
+            color: white;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .sidebar .active {
+            background-color: #007bff;
+        }
+        .content {
+            margin-left: 220px; /* Para que el contenido no quede cubierto por el sidebar */
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .content {
+                margin-left: 0;
+            }
+            .container {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra lateral (sidebar) -->
+<div class="sidebar">
+    <h4 class="text-center text-white">GestorGastos</h4>
+    <a href="/dashboard" class="active">Dashboard</a>
+    <a href="/movimientos">Movimientos</a>
+    <a href="/categorias">Categorías</a>
+    <a href="/logout">Cerrar sesión</a>
+</div>
+
+<!-- Contenido principal -->
+<div class="container content">
+    <h2>Resumen Financiero</h2>
+
+    <!-- Gráfica -->
+    <div class="card">
+        <div class="card-header">
+            <h5>Resumen Actual</h5>
+        </div>
+        <div class="card-body">
+            <canvas id="financialChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Botón para ver registros -->
+    <div class="btn-container">
+        <a href="/movimientos" class="btn btn-primary">Ver Registros de Movimientos</a>
+    </div>
+</div>
+
+<script>
+    var ctx = document.getElementById('financialChart').getContext('2d');
+    var financialChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Ingresos', 'Gastos', 'Ahorro'],
+            datasets: [{
+                label: 'Resumen Financiero',
+                data: [2000, 1500, 500], // Datos dinámicos desde el backend
+                backgroundColor: ['#36a2eb', '#ff6384', '#ffce56'],
+                hoverOffset: 4
+            }]
+        }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
