@@ -5,12 +5,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    // Método para autenticar el usuario
+    // Método de autenticación básico
     public boolean authenticate(String username, String password) {
-        // Aquí se verifican las credenciales (puedes hacer una consulta a la base de datos)
-        // Como ejemplo, vamos a asumir que el usuario "admin" y contraseña "admin" son válidos.
-
-        return "admin".equals(username) && "admin".equals(password);
+        // Aquí deberías implementar tu lógica de autenticación
+        // En un caso real, probablemente comprobarías la base de datos o algún repositorio
+        // Esto es solo un ejemplo básico:
+        return "admin".equals(username) && "password".equals(password);  // Cambia por tu lógica real
     }
 }
-

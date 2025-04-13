@@ -1,26 +1,23 @@
 package com.kalz.gestor_gastos.controller;
 
+import com.kalz.gestor_gastos.service.UserService;  // Asegúrate de importar el servicio
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
 
-    @Autowired
-    private UserService userService;  // Un servicio para autenticar usuarios
+    private final UserService userService;  // Usando el constructor para inyectar el servicio
 
-    // Constructor para inyectar el servicio de usuario
+    @Autowired
     public LoginController(UserService userService) {
         this.userService = userService;
     }
-
-    @Autowired
-    private UserService userService;  // Un servicio para autenticar usuarios
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, HttpSession session, Model model) {
