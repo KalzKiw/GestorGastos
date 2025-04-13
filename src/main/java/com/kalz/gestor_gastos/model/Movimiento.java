@@ -1,10 +1,10 @@
 package com.kalz.gestor_gastos.model;
 
-import com.kalz.gestor_gastos.model.Usuario;
-import jakarta.validation.constraints.*;
-
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
